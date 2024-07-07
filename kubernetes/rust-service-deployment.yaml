@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rust-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: rust-service
+  template:
+    metadata:
+      labels:
+        app: rust-service
+    spec:
+      containers:
+      - name: rust-service
+        image: us-central1-docker.pkg.dev/k8s-polyglot-test-1/rust-service/rust-service:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8081
+      imagePullSecrets:
+      - name: gcr-json-key
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: rust-service
+spec:
+  selector:
+    app: rust-service
+  ports:
+    - protocol: TCP
+      port: 8081
+      targetPort: 8081

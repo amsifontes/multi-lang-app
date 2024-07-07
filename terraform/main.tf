@@ -36,5 +36,10 @@ resource "google_artifact_registry_repository" "java-service" {
   format        = "docker"
 }
 
-
+resource "google_artifact_registry_repository" "rust-service" {
+  location      = "us-central1"
+  repository_id = "rust-service"
+  description   = "GCR repository for Rust service of the multi-lang app"
+  format        = "docker"
+}
 
