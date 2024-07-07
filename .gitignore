@@ -21,10 +21,12 @@ Thumbs.db
 *.swp
 *~
 
-# Ignore Terraform state files
+# Ignore Terraform state, lock, and provider files
 *.tfstate
 *.tfstate.backup
 *.tfplan
+terraform/.terraform.lock.hcl
+terraform/.terraform/providers/
 
 # Ignore Kubernetes configuration files
 *.kubeconfig
