@@ -17,7 +17,7 @@ spec:
         image: us-central1-docker.pkg.dev/k8s-polyglot-test-1/java-service/java-service:latest
         imagePullPolicy: Always
         ports:
-        - containerPort: 8080
+        - containerPort: 8080 # confirm where this port is defined by the application
       imagePullSecrets:
       - name: gcr-json-key
 ---
