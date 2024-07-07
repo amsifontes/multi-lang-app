@@ -1,0 +1,44 @@
+# Ignore miscellaneaus build artifacts and dependencies
+node_modules/
+target/
+
+# Ignore IDE and editor files
+.idea/
+.vscode/
+*.iml
+*.ipr
+*.iws
+
+# Ignore logs and temporary files
+logs/
+*.log
+*.log.*
+*.tmp
+
+# Ignore OS and editor-specific files
+.DS_Store
+Thumbs.db
+*.swp
+*~
+
+# Ignore Terraform state files
+*.tfstate
+*.tfstate.backup
+*.tfplan
+
+# Ignore Kubernetes configuration files
+*.kubeconfig
+*.kube/
+
+# Ignore Java specific files
+*.class
+*.jar
+*.war
+*.ear
+
+# Ignore React.js build artifacts
+build/
+dist/
+
+# Ignore Express.js generated files
+public/
