@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: backend-service
+  template:
+    metadata:
+      labels:
+        app: backend-service
+    spec:
+      containers:
+      - name: backend-service
+        image: us-central1-docker.pkg.dev/k8s-polyglot-test-1/backend-service/backend-service:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 5000
+        env:
+        - name: NODE_ENV
+          value: "production"
+      imagePullSecrets:
+      - name: gcr-json-key
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: backend-service
+spec:
+  selector:
+    app: backend-service
+  ports:
+    - protocol: TCP
+      port: 5000
+      targetPort: 5000
+  # type: LoadBalancer # Determine if this is needed when deployed to public cloud
