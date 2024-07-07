@@ -43,3 +43,9 @@ resource "google_artifact_registry_repository" "rust-service" {
   format        = "docker"
 }
 
+resource "google_artifact_registry_repository" "dart-service" {
+  location      = "us-central1"
+  repository_id = "dart-service"
+  description   = "GCR repository for Dart service of the multi-lang app"
+  format        = "docker"
+}

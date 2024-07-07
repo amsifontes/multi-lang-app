@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dart-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: dart-service
+  template:
+    metadata:
+      labels:
+        app: dart-service
+    spec:
+      containers:
+      - name: dart-service
+        image: us-central1-docker.pkg.dev/k8s-polyglot-test-1/dart-service/dart-service:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8082
+      imagePullSecrets:
+      - name: gcr-json-key
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: dart-service
+spec:
+  selector:
+    app: dart-service
+  ports:
+    - protocol: TCP
+      port: 8082
+      targetPort: 8082
